@@ -1,7 +1,7 @@
 # 问题：
 ## 将代码从本地服务器迁移到集群上时发生如下错误
 ```
-(alphapose) [u20120297@gpu01 AlphaPose]$ python video_inference.py 
+(alphapose) $ python video_inference.py 
 Traceback (most recent call last):
   File "video_inference.py", line 17, in <module>
     from alphapose.models import builder
@@ -104,7 +104,7 @@ copying build/lib.linux-x86_64-3.6/alphapose/models/layers/dcn/deform_conv_cuda.
 去gibhub代码地址看了下，src是作者提供的应该没问题，那问题就是build文件夹了，进入目录下查看
 
 ```
-(alphapose) [u20120297@gpu01 build]$ ls
+(alphapose) $ ls build
 lib.linux-x86_64-3.6  lib.linux-x86_64-3.8  temp.linux-x86_64-3.6  temp.linux-x86_64-3.8
 ```
 当时复制代码的时候把这个build以及alphapose.egg-info egg包一起复制了，运行setup的时候检测到有lib.linux-x86_64-3.6和temp.linux-x86_64-3.6就没再编译一遍，也就是说，build里面的.o文件是本地服务器环境下编译的，而代码运行的环境是集群的，终于理解上面说的编译环境和运行环境不同是啥意思了，꒰*´◒`*꒱
